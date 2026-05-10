@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: gravatar-postgres
+    environment:
+      POSTGRES_USER: gravatar
+      POSTGRES_PASSWORD: gravatar123
+      POSTGRES_DB: gravatar
+    volumes:
+      - gravatar-pg-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  gravatar-pg-data:
