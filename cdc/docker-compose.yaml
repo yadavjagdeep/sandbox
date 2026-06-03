@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  postgres:
+
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: cdcdb
+      POSTGRES_USER: cdc
+      POSTGRES_PASSWORD: cdc
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+      - "-c"
+      - "max_replication_slots=4"
+      - "-c"
+      - "max_wal_senders=4"
+    volumes:
+      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
