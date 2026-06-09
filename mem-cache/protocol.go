@@ -108,7 +108,7 @@ func ParseResponse(reader *bufio.Reader) Result {
 		return Result{Found: true, Value: value}
 
 	case strings.HasPrefix(line, "-ERR"):
-		return Result{Err: fmt.Errorf(line[5:])}
+		return Result{Err: fmt.Errorf("%s", line[5:])}
 
 	default:
 		return Result{Err: fmt.Errorf("unknown response: %s", line)}
