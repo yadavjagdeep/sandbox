@@ -1,0 +1,24 @@
+# Binaries
+server-bin
+indexer-bin
+*.exe
+
+# Generated data files
+data/*.wdict
+
+# Go
+vendor/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test output
+*.test
+*.out

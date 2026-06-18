@@ -1,0 +1,22 @@
+services:
+  id-generator:
+    build:
+      context: ./services/id-generator
+    ports:
+      - "8080:8080"
+
+  auth-service:
+    build:
+      context: ./services/auth-service
+    ports:
+      - "8081:8081"
+
+  envoy:
+    image: envoyproxy/envoy:v1.31-latest
+    volumes:
+      - ./envoy/envoy.yaml:/etc/envoy/envoy.yaml
+    ports:
+      - "10000:10000"
+    depends_on:
+      - id-generator
+      - auth-service
